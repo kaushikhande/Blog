@@ -22,4 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# Sample Blog application in rails
+### Sample Blog application in rails
+
+**This is my first _rails_ application**
+
