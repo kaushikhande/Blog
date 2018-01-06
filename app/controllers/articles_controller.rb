@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
   end
   
   def show
+    sleep(10)
     @article = Article.find(params[:id])
   end
   
