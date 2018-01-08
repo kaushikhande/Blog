@@ -12,7 +12,7 @@
   </p>
  
   <p>
-    <%= form.submit %>
+    <%= form.submit "Create Article", :data => {:disable_with => 'Please Wait...', :confirm => "Are you sure?"} %>
   </p>
   
   <%= link_to 'Back', articles_path %>
