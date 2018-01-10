@@ -4,7 +4,15 @@ class ArticlesController < ApplicationController
   
   
   def index
-    @articles = Article.all
+    begin
+      #raise RuntimeError.new("You messed up!")
+      1/0
+    rescue => e
+      Rails.logger.error { "Encountered an error when trying to find or create Person for: , #{e.message} #{e.backtrace.join()}"}
+      Raven.capture_exception(e)
+      @articles = Article.all
+    end
+    
   end
   
   def create
