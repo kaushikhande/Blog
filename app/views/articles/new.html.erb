@@ -10,10 +10,15 @@
     <%= form.label :text %><br>
     <%= form.text_area :text %>
   </p>
- 
+  <%= form.select(:article_id) do %>
+    <% @articles.each do |article| -%>
+      <%= content_tag(:option, article.title, value: article.id) %>
+    <% end %>
+  <% end %>
   <p>
     <%= form.submit "Create Article", :data => {:disable_with => 'Please Wait...', :confirm => "Are you sure?"} %>
   </p>
   
+  <%= form.select :lists, [["test1", 1], ["test2", 0]] %>
   <%= link_to 'Back', articles_path %>
 <% end %>

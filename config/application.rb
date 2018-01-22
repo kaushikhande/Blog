@@ -14,11 +14,14 @@ module Blog
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.active_job.queue_adapter = :sidekiq
+    Raven.configure do |config|
+      config.dsn = ENV["SENTRY_DSN"]
+      config.timeout = 10
+      config.open_timeout = 10
+    end
   end
 end
+#config.dsn = ENV["SENTRY_DSN"]
+#config.dsn = "foo"
 
-Raven.configure do |config|
-  config.dsn = ENV["SENTRY_DSN"]
-  config.timeout = 10
-  config.open_timeout = 10
-end

@@ -1,26 +1,34 @@
 class ArticlesController < ApplicationController
   def new
+    @articles ||= Article.all 
   end
   
   
   def index
-    begin
+    #begin
       #raise RuntimeError.new("You messed up!")
-      1/0
-    rescue => e
-      Rails.logger.error { "Encountered an error when trying to find or create Person for: , #{e.message} #{e.backtrace.join()}"}
-      Raven.capture_exception(e)
+    #  1/0
+    #rescue => e
+      #Rails.logger.error { "Encountered an error when trying to find or create Person for: , #{e.message} #{e.backtrace.join()}"}
+      #Raven.capture_exception(e)
       @articles = Article.all
-    end
+    #end
     
   end
   
   def create
     #render plain: params[:article].inspect
-    @article = Article.new(article_params)
+    #puts article_params.inspect
+    #@article = Article.new(article_params)
+    #sleep(10)
+    #@article.save
+    h = {
+    :title => "New Article1", :text => "This is sample text"
+    }
     
-    @article.save
-    redirect_to @article
+    #PygmentsWorker.perform_async Article.find(13)
+    GuestsCleanupJob.set(wait: 1.5.minute).perform_later(Article.find(14))
+    redirect_to articles_path
     
   end
   
