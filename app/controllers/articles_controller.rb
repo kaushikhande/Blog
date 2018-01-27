@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  
+  #before_filter :authenticate_user!, except: [:index, :show]
+  
   def new
     @articles ||= Article.all 
   end
@@ -19,21 +22,21 @@ class ArticlesController < ApplicationController
   def create
     #render plain: params[:article].inspect
     #puts article_params.inspect
-    #@article = Article.new(article_params)
+    @article = Article.new(article_params)
     #sleep(10)
-    #@article.save
-    h = {
-    :title => "New Article1", :text => "This is sample text"
-    }
+    @article.save
+    #h = {
+    #:title => "New Article1", :text => "This is sample text"
+    #}
     
     #PygmentsWorker.perform_async Article.find(13)
-    GuestsCleanupJob.set(wait: 1.5.minute).perform_later(Article.find(14))
+    #GuestsCleanupJob.set(wait: 1.5.minute).perform_later(Article.find(14))
     redirect_to articles_path
     
   end
   
   def show
-    sleep(10)
+    #sleep(10)
     @article = Article.find(params[:id])
   end
   
