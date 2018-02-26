@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
     #}
     
     #PygmentsWorker.perform_async Article.find(13)
-    #GuestsCleanupJob.set(wait: 1.5.minute).perform_later(Article.find(14))
+    GuestsCleanupJob.set(wait: 0.1.minute).perform_later(Article.find(14))
     redirect_to articles_path
     
   end

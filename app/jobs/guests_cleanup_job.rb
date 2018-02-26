@@ -17,5 +17,7 @@ class GuestsCleanupJob < ApplicationJob
     a.text = article.text
     a.save
     #redirect_to articles_path
+    GuestsCallAgainJob.set(wait: 0.1.minute).perform_later(Article.find(14))
+    GuestsCallAgainJob.set(wait: 0.1.minute).perform_later(Article.find(14))
   end
 end
