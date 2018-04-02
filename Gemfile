@@ -75,6 +75,8 @@ gem 'jquery-rails'
 
 gem 'active_job_status'
 
+gem 'pg'
+
 #gem 'activejob-status', github: 'inkstak/activejob-status'
 
 
