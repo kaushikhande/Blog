@@ -75,7 +75,7 @@ gem 'jquery-rails'
 
 gem 'active_job_status'
 
-gem 'pg'
+
 
 #gem 'activejob-status', github: 'inkstak/activejob-status'
 
@@ -85,5 +85,5 @@ group :development do
 end
 
 group :test, :production do
-    gem 'pg'
+    gem "pg", "~> 0.18" 
 end
