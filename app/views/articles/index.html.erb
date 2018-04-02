@@ -1,9 +1,18 @@
 <h1>Listing articles</h1>
 <%= link_to 'New article', new_article_path %>
+<%-#= javascript_include_tag( 'sample1.js' ) -%>
+
+<div id='loader'>
+<%=image_tag("Eclipse-1s-200px.gif", alt: "Example Image", size: "50x50", display:"none")%>
+</div>
+<div id='status'>
+<p> </p>
+</div>
 <table>
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th><%= @item.email %></th>
   </tr>
   
   <% @articles.each do |article| %>

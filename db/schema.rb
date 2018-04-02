@@ -10,11 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127181316) do
+ActiveRecord::Schema.define(version: 20180325064953) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "background_jobs", force: :cascade do |t|
+    t.string "job_name"
+    t.string "job_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "data"
+    t.string "user_id"
+  end
+
+  create_table "banks", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "shortname"
+    t.string "type"
+    t.string "external_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "instituteType"
+    t.string "country"
+    t.string "serviceName"
+    t.string "loginIdCaption"
+    t.string "passwordCaption"
+    t.string "serviceType"
+    t.string "securityCodeCaption"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

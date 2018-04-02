@@ -14,7 +14,10 @@ class ArticlesController < ApplicationController
     #rescue => e
       #Rails.logger.error { "Encountered an error when trying to find or create Person for: , #{e.message} #{e.backtrace.join()}"}
       #Raven.capture_exception(e)
+      #render json: { result: 'pending'}
+      @item = current_user
       @articles = Article.all
+      #render json: { result: 'pending'}
     #end
     
   end
@@ -29,7 +32,7 @@ class ArticlesController < ApplicationController
     #:title => "New Article1", :text => "This is sample text"
     #}
     
-    #PygmentsWorker.perform_async Article.find(13)
+    PygmentsWorker.perform_async
     GuestsCleanupJob.set(wait: 0.1.minute).perform_later(Article.find(14))
     redirect_to articles_path
     
@@ -38,6 +41,16 @@ class ArticlesController < ApplicationController
   def show
     #sleep(10)
     @article = Article.find(params[:id])
+    #render json: { result: 'failure'}
+    #render json: { result: 'pending'}
+  end
+  
+  def show1
+    #sleep(10)
+    #@article = Article.find(params[:id])
+    #render json: { result: 'failure'}
+    @item = current_user
+    render json: { result: 'pending'}
   end
   
   private

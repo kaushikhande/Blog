@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -62,6 +62,7 @@ group :development, :test do
 end
 
 gem 'sidekiq'
+gem 'sidekiq-status'
 
 gem 'sinatra', require: false
 gem 'slim'
@@ -69,3 +70,18 @@ gem 'slim'
 gem 'httparty', '~> 0.13.7'
 
 gem 'devise'
+
+gem 'jquery-rails'
+
+gem 'active_job_status'
+
+#gem 'activejob-status', github: 'inkstak/activejob-status'
+
+
+group :development do
+   gem 'sqlite3'
+end
+
+group :test, :production do
+    gem 'pg'
+end
