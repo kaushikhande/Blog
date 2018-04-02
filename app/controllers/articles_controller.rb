@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   #before_filter :authenticate_user!, except: [:index, :show]
   
   def new
-    @articles ||= Article.all 
+    @articles ||= Article.new 
   end
   
   
